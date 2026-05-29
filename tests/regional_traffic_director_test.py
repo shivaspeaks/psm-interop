@@ -27,13 +27,6 @@ _XdsTestClient = xds_k8s_testcase.XdsTestClient
 
 
 class RegionalTrafficDirectorTest(xds_k8s_testcase.AppNetXdsKubernetesTestCase):
-    def setUp(self):
-        if getattr(self, "xds_server_region", None):
-            self.xds_server_uri = (
-                f"trafficdirector.{self.xds_server_region}.rep.googleapis.com:443"
-            )
-        super().setUp()
-
     def test_regional_traffic_director_baseline(self) -> None:
         with self.subTest("00_create_health_check"):
             self.td.create_health_check()
